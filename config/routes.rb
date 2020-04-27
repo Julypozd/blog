@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   resources :posts do
     resources :comments
     # get    '/comments',          to: 'comments#index', as: 'comments'
