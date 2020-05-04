@@ -55,7 +55,7 @@ class CustomersController < ApplicationController
     #     format.json { render json: @customer.errors, status: :unprocessable_entity }
     #   end
     # end
-  end
+  
 
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
@@ -113,4 +113,4 @@ class CustomersController < ApplicationController
       redirect_to customers_path
     end
 
-#end
+end

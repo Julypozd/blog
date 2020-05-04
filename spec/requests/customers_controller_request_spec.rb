@@ -56,18 +56,26 @@ end
     end
   end
 
+  # describe "put customer_path with valid data" do
+  #   it "updates an entry and redirects to the show path for the customer" do
+  #   customer = FactoryBot.create(:customer)
+  #   params = {customer: 
+  #     {first_name:"Adam", last_name: "New", phone: "1234567890", email: "example@example.com"}}
+  #   expect {put customer_path(customer.id), params:params}.to_not change(Customer, :count)
+  #   customer.reload
+  #   expect (customer.first_name).to eq("Adam")
+  #   expect(response).to redirect_to customer_path(customer.id)
+  #   end
+  # end 
   describe "put customer_path with valid data" do
-    it "updates an entry and redirects to the show path for the customer" do
-    customer = FactoryBot.create(:customer)
-    params = {customer: 
-      {first_name:"Add", last_name: "New", phone: "1234567890", email: "example@example.com"}}
-    expect { put customer_path(customer.id), params:params}.to_not change(Customer, :count)
-    customer.reload
-    expect (customer.first_name).to eq("Add")
-    expect(response).to redirect_to customer_path(customer.id)
-    end
-  end 
-  
+         it "updates an entry and redirects to the show path for the customer" do
+            customer = FactoryBot.create(:customer, phone: "1234567890")
+            expect(customer.phone).to eq("1234567890")
+            put customer_path(customer), {customer: {phone: "1234567892"}}
+            customer.reload
+            expect(customer.phone).to eq("1234567892")
+         end
+  end
 
   describe "put customer_path with invalid data" do
          it "does not update the customer record or redirect" do
@@ -80,12 +88,13 @@ end
   end
 
   describe "delete a customer record" do
-    it "deletes a customer record" do
-      customer = FactoryBot.create(:customer)
-      delete customer_path(customer.id)
-      expect(Customer.count).to eq(0) 
-    end
-  end 
+         it "deletes a customer record" do
+            customer = FactoryBot.create(:customer)
+            delete customer_path(customer.id)
+            expect change(Customer, :count).from(1).to eq(0)
+            expect(response.status).to eq(302)
+         end
+  end
 end 
 
 
