@@ -19,29 +19,40 @@
   <strong>Email:</strong>
   <%= @customer.email %>
 </p>
-
-<p>
-  <strong>Orders:</strong>
-  <% @customer.orders %>
-</p>
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
 
 <div id="orders">
   <% if @customer.orders.present? %>
      <h3>Orders:</h3>
-     <% end %>
-     <%#THIS DOESN'T WORK"%>
-     <%#=  render @customer.orders %>
-
-  <tbody>
-      <tr>
-        <td><%#= @order.product_name %></td>
-        <td><%#= @order.product_count %></td>
-        <td><%#= link_to 'Show', order %></td>
-        <td><%#= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%#= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  </tbody>
+  <table style="width:80%">  
+  <tr>
+    <th>Product name</th> 
+    <th>Product count</th>
+    <th>Change order</th>
+    <% @customer.orders.each do |order| %>
+  </tr>
+  <tr>
+    <td><%= order.product_name %> </td>
+    <td><%= order.product_count %></td>
+    <td><%= link_to 'Show', order %> <%= link_to 'Edit', edit_order_path(order) %> <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr> 
+   
+    <% end %>
+  <% end %>
 </div>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 {
+  width: 100%;    
+  background-color: #f1f1c1;
+}
+</style>
