@@ -37,16 +37,16 @@ end
     expect(response.status).to eq(200)
   end
 end 
-####################
+
   describe "post orders_path with valid data" do
     it "saves a new entry and redirects to the show path for the entry" do
       order_attributes = FactoryBot.attributes_for(:order)
-      order_attributes[:customer] = FactoryBot.create(:customer)
+      order_attributes[:customer_id] = FactoryBot.create(:customer).id
       expect {post orders_path, {order: order_attributes}}.to change(Order, :count)
       expect(response).to redirect_to order_path(id: Order.last.id)
     end
   end
-######################
+
   describe "post orders_path with invalid data" do
     it "does not save a new entry or redirect" do
       order_attributes = FactoryBot.attributes_for(:order, customer: FactoryBot.create(:customer))
