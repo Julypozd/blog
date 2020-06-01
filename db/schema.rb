@@ -10,48 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200505151149) do
-
-  create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "post_id"
-    t.index ["post_id"], name: "index_comments_on_post_id"
-  end
+ActiveRecord::Schema.define(version: 20200601142853) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
     t.string   "email"
+    t.integer  "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_customers_on_driver_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string   "product_name"
-    t.integer  "product_count"
+  create_table "customers_drivers", id: false, force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "driver_id"
+    t.index ["customer_id"], name: "index_customers_drivers_on_customer_id"
+    t.index ["driver_id"], name: "index_customers_drivers_on_driver_id"
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "phone"
+    t.string   "email"
     t.integer  "customer_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
-  end
-
-  create_table "pages", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "body"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["customer_id"], name: "index_drivers_on_customer_id"
   end
 
 end

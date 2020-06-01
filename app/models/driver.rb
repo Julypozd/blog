@@ -1,8 +1,8 @@
-class Customer < ApplicationRecord
-
-	#has_many :drivers
-	#belongs_to :drivers
-	has_and_belongs_to_many :drivers
+class Driver < ApplicationRecord
+  
+  #has_many :customers
+  #belongs_to :customers
+  has_and_belongs_to_many :customers
  
  validates :first_name, presence: true
  validates :last_name, presence: true
@@ -18,3 +18,5 @@ class Customer < ApplicationRecord
  end
 
 end
+
+

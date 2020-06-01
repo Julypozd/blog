@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -33,7 +35,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="customers/new">I need delivery</a>
-          <a class="dropdown-item" href="http://localhost:3000/drivers/new">I can help</a>
+          <a class="dropdown-item" href="drivers/new">I can help</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="http://localhost:3000/about">About us</a>
         </div>
@@ -47,57 +49,50 @@
 </div>
 </nav>
 
-<div class="container mt-5">
-      <div class="col-sm mb-3 text-sm-center">
-        <h3  mb-3>Register to get help:</h3>
-        <img class="mb-5 img-fluid rounded-circle" src="/assets/help.png" alt="I need help" width="400" height=auto /img>
-      <p> </p>
-
-<%= form_for(customer) do |f| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
-      <ul>
-      <% customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+ <!-- DRIVERS -->
+<div class="jumbotron jumbotron-fluid mt-3 bg-success text-white">
+  <img class="mb-5 img-fluid rounded-circle float-left" src="/assets/delivery.jpg"  alt="I want to help" width="400" height=auto /img>
+  <div class="container text-sm-center ">
+    <h1 class="display-4">Our Drivers</h1>
+    <h5 class="text-lg-center font-size">Our volunteers are willing to help you. Currently over 100 volunteers are standing by awaiting your call. Our volunteers want to give back to the community or occupy their free time, in addition to gaining wisdom from being in contact with you. They come from all walks of life and have created a profile for you to read in order to get to know them and make an educated decision for choosing a helper when the time is right for you to get care.</h5>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-  <%= f.label :driver_id %>
-  <%= f.collection_select :driver_id, Driver.all, :id, :full_name, include_blank: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <%= link_to 'Back', customers_path %>
-<% end %>
 </div>
+
+
+
+ <!-- TABLES -->
+  <table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.full_name %></td>
+        <td><%= driver.phone %></td>
+        <td><%= driver.email %></td>
+        <td><%= link_to 'About', driver %></td>
+        <td><%= link_to 'Edit', edit_driver_path(driver) %></td>
+        <td><%= link_to 'Delete', driver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div class="col-sm mb-3 text-sm-center">
+<a href=drivers/new button type="button" class="btn btn-success btn-lg text-white">Register to help, volunteer to drive</button></a>
+<br>
+<br>
+<br>
 </div>
+</body>  
 
 <hr> 
     <div class="row py-8 text-muted">
@@ -115,6 +110,5 @@
     </div>
   </div>
 </div>
-
-</body>
+</hr>
 </html>

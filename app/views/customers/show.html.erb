@@ -1,5 +1,58 @@
 <p id="notice"><%= notice %></p>
 
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>VolunteerDelivery</title>
+  </head>
+  <body>
+<!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand" href=home>VolunteerDelivery</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="http://localhost:3000/home">HOME<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/about">ABOUT</a> <span class="sr-only">(current)</span></a>
+        </li>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href=pages id="PageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          VolunteerDelivery
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="customers/new">I need delivery</a>
+          <a class="dropdown-item" href="drivers/new">I can help</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="http://localhost:3000/about">About us</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-light my-2 my-sm-0 " type="submit">Search</button>
+    </form>   
+  </div>
+</div>
+</nav>
+
+<div class="container mt-5">
+      <div class="col-sm mb-3 text-sm-center">
+        <h3  mb-3>About the client:</h3>
+        <img class="mb-5 img-fluid rounded-circle" src="/assets/help.png" alt="I need help" width="300" height=auto /img>
 <p>
   <strong>First name:</strong>
   <%= @customer.first_name %>
@@ -18,41 +71,41 @@
 <p>
   <strong>Email:</strong>
   <%= @customer.email %>
-</p>
+</p>  
+
+<p>
+  <% if @customer.drivers.present? %>
+  <strong>Drivers:</strong>
+  <%= @customer.drivers.each do |driver|%>
+    <%= driver.first_name %>
+    <%= driver.last_name %>
+    <% end %>
+<% end %>
+</p> 
+
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
 
-<div id="orders">
-  <% if @customer.orders.present? %>
-     <h3>Orders:</h3>
-  <table style="width:80%">  
-  <tr>
-    <th>Product name</th> 
-    <th>Product count</th>
-    <th>Change order</th>
-    <% @customer.orders.each do |order| %>
-  </tr>
-  <tr>
-    <td><%= order.product_name %> </td>
-    <td><%= order.product_count %></td>
-    <td><%= link_to 'Show', order %> <%= link_to 'Edit', edit_order_path(order) %> <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr> 
-   
-    <% end %>
-  <% end %>
+</div>
+</div>
 </div>
 
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
-table#t01 {
-  width: 100%;    
-  background-color: #f1f1c1;
-}
-</style>
+
+<hr> 
+    <div class="row py-8 text-muted">
+  <div class="col-md">
+    <p><strong>About VolunteerDelivery</strong></p>
+    <p>Our mission is to help seniors and individuals with disabilities maintain their independence and continue living in their homes.</p>
+  </div>
+  <div class="col-md">
+    <p><strong>Contact us</strong></p>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Email">
+      <span class="input-group-btn">    
+    <button type="button" class="btn btn-success">Sign up</button>
+      </span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

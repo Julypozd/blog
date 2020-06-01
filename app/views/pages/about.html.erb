@@ -1,5 +1,4 @@
-
-<!doctype html>
+<p id="notice"><%= notice %></p>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -26,7 +25,7 @@
         	<a class="nav-link" href="http://localhost:3000/home">HOME<span class="sr-only">(current)</span></a>
       	</li>
       	<li class="nav-item">
-        	<a class="nav-link" href="http://localhost:3000/about">ABOUT</a> <span class="sr-only">(current)</span></a>
+        	<a class="nav-link" href="http://localhost:3000/posts">ABOUT</a> <span class="sr-only">(current)</span></a>
       	</li>
 
     <li class="nav-item dropdown">
@@ -37,7 +36,7 @@
           <a class="dropdown-item" href="customers/new">I need delivery</a>
           <a class="dropdown-item" href="drivers/new">I can help</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="http://localhost:3000/posts">About us</a>
+          <a class="dropdown-item" href="http://localhost:3000/about">About us</a>
         </div>
       </li>
     </ul>
@@ -51,37 +50,33 @@
 <!-- Jumbotron -->
 <div class="jumbotron jumbotron-fluid mt-4 bg-success text-white">
   <div class="container text-sm-center">
-    <h1 class="display-3">Want to help! Need help?</h1>
+    <h1 class="display-3">About us</h1>
     <p class="lead">Help people access food and prevent isolation in your community by picking up, delivering and putting away groceries. </p>
     <a href=drivers/new button type="button" class="btn btn-light btn-lg text-success">Register to help</button></a>
     <a href=customers/new button type="button" class="btn btn-light btn-lg text-success">Register for help</button> </a>
   </div>
 </div>
 
- <!-- containers -->   
-<div class="container mt-5">
+ <!-- about us -->  
+ <div class="container mt-5">
 	<div class="row row-cols-2">
     	<div class="col-sm mb-3 text-sm-center">
-    		<h3 mb-3>I need help</h3>
+    		
     		<img src="/assets/help.png" alt="I need help" class="rounded-circle rounded-sm img-fluid" width="400" height=auto /img>   	
 			<br></br>
 			<p></p>
-			<p>If you can not go to the store we connect you with Personal Drivers in your area to shop and deliver groceries from your favorite stores. </p>
-			<a href=drivers class="btn btn-success stretched-link text-white">Find someone who can help you</a>
-		</div>
+			<h6>Getting your groceries delivered is kind of the best thing ever right now as most people are trying to stay home during COVID-19. But while you wait at home for your drop-off, your driver is braving the store aisles for you. Many people are sending drivers a snack or beverage on their shopping trip to show them some extra gratitude (in addition to a tip). Here’s how you can do the same, and make the most of grocery delivery services during stay-at-home orders. 
+	
 
-    	<div class="col-sm mb-3 text-sm-center">
-    		<h3  mb-3>I can help</h3>
-        
-    		<img class="mb-5 img-fluid rounded-circle" src="/assets/delivery.jpg" alt="I can help" width="500" height=auto /img>
-			<p> Volunteer to deliver produce. Help people by filling grocery orders and deliver produce directly to their door on a weekly or byweekly schedule.</p>
-			<a href=customers class="btn btn-success stretched-link text-white">Find someone who needs your help</a>
-      <br>
-      <br>
-      <br>
-    	</div>
- 	</div>
-</div> 
+			Schedule a morning delivery for the best results. During COVID-19, many stores are constantly restocking shelves, but especially so at night during off-hours. This means that if you need to buy in-demand things like toilet paper, flour, or yeast, place your grocery order the night before for one of the first available delivery windows the next morning. Your driver will be more likely to have access to well-stocked shelves and not have to send you the dreaded “they’re out” message.</h6>
+			<br>
+			<a href=drivers class="btn btn-success stretched-link text-white">Find someone who can help you</a>
+			<br>
+
+
+<br>
+<br>
+<br>
   </body>
 
   <hr> 

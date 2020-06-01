@@ -33,7 +33,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="customers/new">I need delivery</a>
-          <a class="dropdown-item" href="http://localhost:3000/drivers/new">I can help</a>
+          <a class="dropdown-item" href="drivers/new">I can help</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="http://localhost:3000/about">About us</a>
         </div>
@@ -47,55 +47,48 @@
 </div>
 </nav>
 
+<p id="notice"><%= notice %></p>
+
 <div class="container mt-5">
+  
+
       <div class="col-sm mb-3 text-sm-center">
-        <h3  mb-3>Register to get help:</h3>
-        <img class="mb-5 img-fluid rounded-circle" src="/assets/help.png" alt="I need help" width="400" height=auto /img>
-      <p> </p>
+        <h3  mb-3>About a driver:</h3>
+        
+        <img class="mb-5 img-fluid rounded-circle" src="/assets/delivery.jpg" alt="I can help" width="300" height=auto /img>
 
-<%= form_for(customer) do |f| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+<p>
+  <strong>First name:</strong>
+  <%= @driver.first_name %>
+</p>
 
-      <ul>
-      <% customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<p>
+  <strong>Last name:</strong>
+  <%= @driver.last_name %>
+</p>
 
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
+<p>
+  <strong>Phone:</strong>
+  <%= @driver.phone %>
+</p>
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+<p>
+  <strong>Email:</strong>
+  <%= @driver.email %>
+</p>
 
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-  <%= f.label :driver_id %>
-  <%= f.collection_select :driver_id, Driver.all, :id, :full_name, include_blank: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <%= link_to 'Back', customers_path %>
+<p>
+  <% if @driver.customers.present? %>
+  <strong>Customers:</strong> 
+    <%= @driver.customers.each do |customer| %>
+    <%= customer.first_name %>
+    <%= customer.last_name %>
+    <% end %>
 <% end %>
+</p>
+
+<%= link_to 'Edit', edit_driver_path(@driver) %> |
+<%= link_to 'Back', drivers_path %>
 </div>
 </div>
 
@@ -115,6 +108,5 @@
     </div>
   </div>
 </div>
-
 </body>
 </html>

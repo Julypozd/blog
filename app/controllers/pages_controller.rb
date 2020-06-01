@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
 	before_action :set_page, only: [:show, :edit, :update, :destroy] #except: [:index, :new, :create]
 
+	def about
+	end 
 
+	def home
+	end
+	
 	def index
 		@pages = Page.all
 	end

@@ -1,8 +1,65 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Customers</h1>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<table>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>VolunteerDelivery</title>
+  </head>
+  <body>
+<!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand" href=home>VolunteerDelivery</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="http://localhost:3000/home">HOME<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/about">ABOUT</a> <span class="sr-only">(current)</span></a>
+        </li>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href=pages id="PageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          VolunteerDelivery
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="customers/new">I need delivery</a>
+          <a class="dropdown-item" href="drivers/new">I can help</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="http://localhost:3000/about">About us</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-light my-2 my-sm-0 " type="submit">Search</button>
+    </form>   
+  </div>
+</div>
+</nav>
+
+<!-- CLIENTS -->
+<div class="jumbotron jumbotron-fluid mt-3 bg-success text-white">
+  <img class="mb-5 img-fluid rounded-circle float-left" src="/assets/help.png" width="300" height=auto /img>
+  <div class="container text-sm-center ">
+    <h1 class="display-3">We need help, help us with delivery</h1>
+    <p class="lead">Register to get help from our drivers</p>
+  </div>
+</div>
+
+<!-- TABLES -->
+  <table class="table table-dark">
   <thead>
     <tr>
       <th> Full name</th>
@@ -20,7 +77,7 @@
         <td><%= customer.email %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +85,29 @@
 
 <br>
 
-<%= link_to 'New Customer', new_customer_path %>
+<div class="col-sm mb-3 text-sm-center">
+<a href="customers/new" button type="button" class="btn btn-success btn-lg text-white">Register to get help, we can deliver to you</button></a>
+<br>
+<br>
+</div>
+
+<hr> 
+    <div class="row py-8 text-muted">
+  <div class="col-md">
+    <p><strong>About VolunteerDelivery</strong></p>
+    <p>Our mission is to help seniors and individuals with disabilities maintain their independence and continue living in their homes.</p>
+  </div>
+  <div class="col-md ml-auto">
+    <p><strong>Contact us</strong></p>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Email">
+      <span class="input-group-btn">    
+    <button type="button" class="btn btn-success">Sign up</button>
+      </span>
+    </div>
+  </div>
+</div>
+</hr>
+
+</body>  
+</html>
